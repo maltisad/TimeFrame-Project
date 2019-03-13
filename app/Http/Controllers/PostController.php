@@ -28,8 +28,11 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::where("id",$id)->get()[0];
-        return $post;
+        // $post = Post::where("id",$id)->get()[0];
+        $post = Post::find($id);
+        //return $post;
+
+        return view('posts.details',compact('post'));
     }
 
 
