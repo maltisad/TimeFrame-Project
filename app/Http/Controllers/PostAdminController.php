@@ -10,7 +10,8 @@ class PostAdminController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::orderBy('id','desc')->get();
         // return $posts;
         return view('admin.posts.index',["posts"=>$posts]);
 
@@ -33,25 +34,34 @@ class PostAdminController extends Controller
         return redirect(url('/admin/posts'));
     }
 
-    public function show($id)
+    public function show($post)
     {
         //
     }
 
 
-    public function edit($id)
+    public function edit($post)
     {
-        //
+        $post = Post::find($post);
+        return view('admin.posts.edit', compact('post'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request,Post $post)
     {
-        //
+
+        // $post = Post::find($post);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+        return redirect(url('/admin/posts'));
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        //$post = Post::find($post);
+        $post->delete();
+        // $post->save();
+        return redirect(url('/admin/posts'));
     }
 }

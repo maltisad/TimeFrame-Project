@@ -138,7 +138,7 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            Data Table Example</div>
+           Posts List</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -170,11 +170,23 @@
                   @foreach($posts as $post)
                   <tr>
                     <td>{{$post->id}}</td>
-                    <td>{{\Illuminate\Support\Str::words($post->content, 5,'...')}}</td>
+                    <td>{{\Illuminate\Support\Str::words($post->title, 5,'...')}}</td>
                     <td>{{\Illuminate\Support\Str::words($post->content, 10,'...')}}</td>
                     <td>{{$post->published_at}}</td>
                     <td>{{$post->created_at}}</td>
                     <td>{{$post->updated_at}}</td>
+                    <td><a href="{{url('/admin/posts/' . $post->id . '/edit')}}" class="btn btn-primary">Edit</a>
+
+<!-- <a style="margin-top:3px" href="{{url('/admin/posts/' . $post->id)}}" class="btn btn-primary">Delete</a> -->
+
+<form action="{{url('/admin/posts/' . $post->id)}}" method="POST" style="margin-top:3px">
+  {{method_field('DELETE')}}
+  {{csrf_field()}}
+            <button type="submit" class="btn btn-primary btn-block">Delete</button>
+
+          </form>
+
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>

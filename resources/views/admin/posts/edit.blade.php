@@ -135,16 +135,20 @@
         </ol>
 
 <div class="card card-register mx-auto mt-5">
-      <div class="card-header">Create a new post</div>
+      <div class="card-header">Edit a post</div>
       <div class="card-body">
-        <form method="POST" action="{{url('/admin/posts')}}">
+        <form method="POST" action="{{url('/admin/posts/' . $post->id)}}">
           {{csrf_field()}}
+          {{method_field('PUT')}}
+<!-- <input type="hidden" name="_method" value="PUT"> -->
+          <!--@method('PUT')
 <!--           @csrf -->
+<!-- <input type="hidden" name="id" value="{{$post->id}}"/> -->
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-12">
                 <div class="form-label-group">
-                  <input type="text" name="title" id="firstName" class="form-control" placeholder="Title" required="required" autofocus="autofocus">
+                  <input type="text" name="title" id="firstName" class="form-control" placeholder="Title" required="required" autofocus="autofocus" value="{{$post->title}}">
                 </div>
               </div>
            
@@ -153,6 +157,7 @@
           <div class="form-group">
             <div class="form-label-group">
               <textarea row="100" cols="100" name="content" class="form-control" placeholder="Content" required="required"/>
+              {{$post->content}}
               </textarea>
             </div>
           </div>

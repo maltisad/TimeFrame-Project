@@ -39,7 +39,10 @@
           <div class="card-body">
             <form>
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <input placeholder="Name" class="form-control" name="author"/>
+              </div>
+              <div class="form-group">
+                <textarea placeholder="Comment" class="form-control" rows="3"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

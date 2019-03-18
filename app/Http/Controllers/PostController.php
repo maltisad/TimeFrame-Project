@@ -26,28 +26,28 @@ class PostController extends Controller
     }
 
 
-    public function show($id)
+    public function show($post)
     {
-        // $post = Post::where("id",$id)->get()[0];
-        $post = Post::find($id);
+        // $post = Post::where("post",$post)->get()[0];
+        $post = Post::find($post);
         //return $post;
 
         return view('posts.details',compact('post'));
     }
 
 
-    public function edit($id)
+    public function edit($post)
+    {
+
+    }
+
+    public function update(Request $request, $post)
     {
         //
     }
 
-    public function update(Request $request, $id)
+    public function destroy($post)
     {
-        //
-    }
 
-    public function destroy($id)
-    {
-        //
     }
 }
