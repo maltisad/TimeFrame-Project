@@ -31,10 +31,11 @@ class PostController extends Controller
     {
         // $post = Post::where("post",$post)->get()[0];
         $post = Post::find($post);
-        $comments = Comment::where("post_id",$post->id)->get();
+        // $comments = Comment::where("post_id",$post->id)->get();
         //return $post;
+        // $post->comment;
 
-        return view('posts.details',compact('post','comments'));
+        return view('posts.details',compact('post'));
     }
 
 
