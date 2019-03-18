@@ -17,6 +17,7 @@
 
 Route::get('/',"PostController@index");
 Route::get('/posts/{post}',"PostController@show");
+Route::post('/comments','CommentController@store');
 
 Route::get('/admin/',function(){
 	return redirect(url('/admin/posts'));
